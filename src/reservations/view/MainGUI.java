@@ -12,41 +12,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class MainGUI extends JFrame{
+public class MainGUI extends JFrame {
 
 	private JTextField fNumber, name, seat;
 	private JButton showFlightsBtn, selectFlightBtn, addPassengerBtn;
 	private ButtonsEventListener listener;
-	
+
 	public MainGUI() {
 
-//		set layout
-		setLayout(new GridLayout(6,0));
-
-//		create elements
-		showFlightsBtn = new JButton("Flights");
-		selectFlightBtn = new JButton("Select Flight");
-		addPassengerBtn = new JButton("Add Passenger");
-
-		fNumber = new JTextField("fNum");
-		name = new JTextField("name");
-		seat = new JTextField("seat");
+		initializeGUI();
 		
-//		add elements to container
-		Container c = getContentPane();
-		c.add(showFlightsBtn);
-		c.add(fNumber);
-		c.add(selectFlightBtn);
-		c.add(name);
-		c.add(seat);
-		c.add(addPassengerBtn);
-
-		setLocationRelativeTo(null);
-		setSize(200, 280);
-		setResizable(false);
-		setVisible(true);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-
 		showFlightsBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -68,11 +43,51 @@ public class MainGUI extends JFrame{
 			}
 		});
 
-	
-	
 	}
-	
+
+	public void clearForm() {
+		fNumber.setText(null);
+		name.setText(null);
+		seat.setText(null);
+	}
+
+	public void switchPassengerButton(Boolean isEnable) {
+		addPassengerBtn.setEnabled(isEnable);
+	}
+
 	public void setShowFlightsEventListener(ButtonsEventListener listener) {
 		this.listener = listener;
+	}
+
+	private void initializeGUI() {
+		// set layout
+		setLayout(new GridLayout(6, 0));
+
+		// create elements
+		showFlightsBtn = new JButton("Flights");
+		selectFlightBtn = new JButton("Select Flight");
+		addPassengerBtn = new JButton("Add Passenger");
+
+		addPassengerBtn.setEnabled(false);
+
+		fNumber = new JTextField(null);
+		name = new JTextField("");
+		seat = new JTextField(null);
+
+		// add elements to container
+		Container c = getContentPane();
+		c.add(showFlightsBtn);
+		c.add(fNumber);
+		c.add(selectFlightBtn);
+		c.add(name);
+		c.add(seat);
+		c.add(addPassengerBtn);
+
+		setLocationRelativeTo(null);
+		setSize(200, 280);
+		setResizable(false);
+		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+
 	}
 }

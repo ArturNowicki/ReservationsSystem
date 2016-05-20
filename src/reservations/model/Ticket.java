@@ -1,31 +1,42 @@
 package reservations.model;
 
+import java.time.LocalDate;
+
 public class Ticket {
 	
-	private String ticketNumber;
+	private LocalDate departureDate;
 	private Passenger passenger;
 	private Flight flight;
 	private Seat seat;
 	
-	public Ticket(String ticketNumber, Passenger passenger, Flight flight, Seat seat) {
-		this.ticketNumber = ticketNumber;
+	public Ticket(LocalDate departureDate, Passenger passenger, Flight flight, Seat seat) {
+		this.departureDate = departureDate;
 		this.passenger = passenger;
 		this.flight = flight;
 		this.seat = seat;
 	}
 
-	public String getTicketNumber() {
-		return ticketNumber;
+	public LocalDate getDepartureDate() {
+		return departureDate;
+	}
+	
+	public Passenger getPassenger() {
+		return passenger;
 	}
 
-	public void setTicketNumber(String ticketNumber) {
-		this.ticketNumber = ticketNumber;
+	public Flight getFlight() {
+		return flight;
 	}
+
+	public Seat getSeat() {
+		return seat;
+	}
+
 
 	@Override
 	public String toString() {
-		return "Ticket [ticketNumber=" + ticketNumber + ", passenger=" + passenger
-				+ ", flight=" + flight + ", seat=" + seat + "]";
+		return "Ticket created: " + passenger
+				+ ", " + flight + ", " + seat + "]";
 	}
 	
 	

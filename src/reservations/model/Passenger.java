@@ -18,6 +18,6 @@ public class Passenger {
 	
 	@Override
 	public String toString() {
-		return "Passenger " + name + ".";
+		return "Passenger " + name;
 	}
 }

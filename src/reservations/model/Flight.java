@@ -37,16 +37,16 @@ public class Flight {
 	public void setArrivalCity(String arrivalCity) {
 		this.arrivalCity = arrivalCity;
 	}
-	@Override
-	public boolean equals(Object other) {
-	    if (other == null) return false;
-	    if (other == this) return true;
-	    if (!(other instanceof Flight))return false;
-	    Flight otherFlight = (Flight)other;
-	    if(otherFlight.flightNumber ==  this.flightNumber) return true;
-	    return false;
-	}
-
+//	@Override
+//	public boolean equals(Object other) {
+//	    if (other == null) return false;
+//	    if (other == this) return true;
+//	    if (!(other instanceof Flight))return false;
+//	    Flight otherFlight = (Flight)other;
+//	    if(otherFlight.flightNumber ==  this.flightNumber) return true;
+//	    return false;
+//	}
+//
 	@Override
 	public String toString() {
 		return "Flight number " + flightNumber + ", departureCity: " + departureCity + ", arrivalCity: " + arrivalCity + ".";
