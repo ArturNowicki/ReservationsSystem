@@ -49,7 +49,7 @@ public class Flight {
 //
 	@Override
 	public String toString() {
-		return "Flight number " + flightNumber + ", departureCity: " + departureCity + ", arrivalCity: " + arrivalCity + ".";
+		return "Flight number " + flightNumber + ", departureCity: " + departureCity + ", arrivalCity: " + arrivalCity;
 	}
 
 }

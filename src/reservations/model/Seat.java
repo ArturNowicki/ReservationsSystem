@@ -17,7 +17,7 @@ public class Seat {
 
 	@Override
 	public String toString() {
-		return "Seat number " + seatNumber + ".";
+		return "Seat number " + seatNumber;
 	}
 	
 	

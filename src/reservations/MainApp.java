@@ -19,7 +19,8 @@ public class MainApp {
 	public static void runApp() {
 		MainGUI mainFrame = new MainGUI();
 		SeatsAndFlightsDB initDB = new SeatsAndFlightsDB();
-		Controller controller = new Controller(initDB, mainFrame);
+		Controller controller = new Controller(initDB);
 		mainFrame.setShowFlightsEventListener(controller);
+		controller.setMainView(mainFrame);
 	}
 }

@@ -1,21 +1,20 @@
 package reservations.view;
 
-import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class MainGUI extends JFrame {
+import reservations.controller.ViewInterface;
+
+public class MainGUI extends JFrame implements ViewInterface {
 
 	private JTextField fNumber, name, seat;
-	private JButton showFlightsBtn, selectFlightBtn, addPassengerBtn;
+	private JButton showFlightsBtn, selectFlightBtn, addPassengerBtn, listTicketsBtn;
 	private ButtonsEventListener listener;
 
 	public MainGUI() {
@@ -42,16 +41,24 @@ public class MainGUI extends JFrame {
 				listener.addPassengerEventPerformed(new PassengerEvent(name, seat));
 			}
 		});
+		
+		listTicketsBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				listener.showTicketsEventPerformed();
+			}
+		});
 
 	}
 
+	@Override
 	public void clearForm() {
 		fNumber.setText(null);
 		name.setText(null);
 		seat.setText(null);
 	}
 
-	public void switchPassengerButton(Boolean isEnable) {
+	@Override
+	public void switchPassengerButton(boolean isEnable) {
 		addPassengerBtn.setEnabled(isEnable);
 	}
 
@@ -61,12 +68,13 @@ public class MainGUI extends JFrame {
 
 	private void initializeGUI() {
 		// set layout
-		setLayout(new GridLayout(6, 0));
+		setLayout(new GridLayout(7, 0));
 
 		// create elements
 		showFlightsBtn = new JButton("Flights");
 		selectFlightBtn = new JButton("Select Flight");
 		addPassengerBtn = new JButton("Add Passenger");
+		listTicketsBtn = new JButton("Tickets");
 
 		addPassengerBtn.setEnabled(false);
 
@@ -82,6 +90,7 @@ public class MainGUI extends JFrame {
 		c.add(name);
 		c.add(seat);
 		c.add(addPassengerBtn);
+		c.add(listTicketsBtn);
 
 		setLocationRelativeTo(null);
 		setSize(200, 280);

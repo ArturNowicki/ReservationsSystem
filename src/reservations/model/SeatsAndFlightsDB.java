@@ -26,31 +26,42 @@ public class SeatsAndFlightsDB {
 	}
 
 	public String addTicket(LocalDate departureDate, String passengerName, int flightNumber, String seatNumber) {
+		// Passenger ticketPassenger = null;
+		// for (Passenger item : getPassengers()) {
+		// if (passengerName.equals(item.getName()))
+		// ticketPassenger = item;
+		// }
+
 		Passenger ticketPassenger = null;
 		for (Passenger item : getPassengers()) {
-			if (passengerName.equals(item.getName()))
+			if (passengerName.equals(item.getName())) {
 				ticketPassenger = item;
+				break;
+			}
 		}
-
+		
 		Flight ticketFlight = null;
 		for (Flight item : getFlights()) {
-			if (flightNumber == item.getFlightNumber())
+			if (flightNumber == item.getFlightNumber()) {
 				ticketFlight = item;
+				break;
+			}
 		}
 
 		Seat ticketSeat = null;
 		for (Seat item : getSeats()) {
-			if (seatNumber.equals(item.getSeatNumber()))
+			if (seatNumber.equals(item.getSeatNumber())) {				
 				ticketSeat = item;
+				break;
+			}
 		}
-
 		Ticket tmpTicket = new Ticket(departureDate, ticketPassenger, ticketFlight, ticketSeat);
-
+		tickets.add(tmpTicket);
 		return tmpTicket.toString();
 	}
 
 	public ArrayList<Seat> getOpenSeats(LocalDate departureDate, int flightNumber) {
-		ArrayList<Seat> openSeats = getSeats();
+		ArrayList<Seat> openSeats = (ArrayList<Seat>) getSeats().clone();
 		for (Ticket item : getTickets()) {
 			if (item.getDepartureDate().equals(departureDate) && item.getFlight().getFlightNumber() == flightNumber) {
 				openSeats.remove(item.getSeat());
@@ -64,11 +75,11 @@ public class SeatsAndFlightsDB {
 		for (Passenger passenger : passengers) {
 			if (passenger.getName().equals(name)) {
 				passengerAdd = false;
-				System.err.println("Passenger: " + name + "already exists!");
-			} else {
-				passengers.add(new Passenger(name));
-				System.out.println("Passenger: " + name + "added to database.");
+				break;
 			}
+		}
+		if (passengerAdd == true) {
+			passengers.add(new Passenger(name));
 		}
 		return passengerAdd;
 	}

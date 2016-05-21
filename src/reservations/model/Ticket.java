@@ -36,7 +36,7 @@ public class Ticket {
 	@Override
 	public String toString() {
 		return "Ticket created: " + passenger
-				+ ", " + flight + ", " + seat + "]";
+				+ ", " + flight + ", " + seat + ".";
 	}
 	
 	
